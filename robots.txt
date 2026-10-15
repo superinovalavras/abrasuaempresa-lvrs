@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://abrasuaempresa.lvrs.com.br/sitemap.xml
