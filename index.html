@@ -157,9 +157,18 @@
 
     <ol class="passos" data-grupo="preparo">
       <li><label><input type="checkbox" id="p1"><span class="sr">Concluído</span></label><div class="corpo"><strong>Tenha uma conta gov.br nível prata ou ouro.</strong><span class="dica">O Portal de Serviços da Jucemg e o SINAL só entram com gov.br, e o nível bronze não basta para atuar nos processos. <a href="https://www.gov.br/governodigital/pt-br/identidade/conta-gov-br/niveis-da-conta-govbr" target="_blank" rel="noopener">Veja como subir o nível da conta</a>.</span></div></li>
-      <li><label><input type="checkbox" id="p2"><span class="sr">Concluído</span></label><div class="corpo"><strong>Tenha em mãos a inscrição imobiliária (IPTU) do imóvel.</strong><span class="dica">É o número do imóvel no cadastro do IPTU, que aparece no carnê. Sem ele, o licenciamento é indeferido automaticamente mais adiante: é o erro mais comum de todo o processo. Se não tiver o carnê, peça o número à Prefeitura.</span></div></li>
+      <li><label><input type="checkbox" id="p2"><span class="sr">Concluído</span></label><div class="corpo"><strong>Tenha em mãos a inscrição imobiliária (IPTU) do imóvel.</strong><span class="dica">É o número do imóvel no cadastro do IPTU, que aparece no carnê. Sem ele, o licenciamento é indeferido automaticamente mais adiante: é o erro mais comum de todo o processo.</span>
+        <div class="ajuda-iptu">
+          <p class="ajuda-tit">Não está com o carnê?</p>
+          <p class="dica">Emita a segunda via no <a href="https://sistemas.lavras.mg.gov.br/portalcidadao/" target="_blank" rel="noopener">Portal do Cidadão</a>: Central Tributária → <b>Emissão de Segunda Via de IPTU</b>, com o código reduzido de um carnê anterior ou a inscrição cadastral. Sem nenhum dos dois, fale com o Cadastro Imobiliário da Prefeitura:</p>
+          <dl class="contato-mini" data-contato="iptu"></dl>
+        </div></div></li>
       <li><label><input type="checkbox" id="p3"><span class="sr">Concluído</span></label><div class="corpo"><strong>Defina as atividades (CNAE) que a empresa vai exercer de verdade.</strong><span class="dica">Procure os códigos na <a href="https://concla.ibge.gov.br/busca-online-cnae.html" target="_blank" rel="noopener">busca de CNAE da CONCLA/IBGE</a>. Declare só o que vai exercer agora: atividade incluída "para o futuro" pode subir o nível de risco e mandar o processo para análise da Vigilância Sanitária e do Meio Ambiente, que vão pedir documentos.</span></div></li>
-      <li><label><input type="checkbox" id="p4"><span class="sr">Concluído</span></label><div class="corpo"><strong>Anote os dados do imóvel.</strong><span class="dica">Natureza do imóvel (urbano, rural ou sem regularização), área total da edificação, área que a empresa vai usar e forma de atuação (estabelecimento fixo, internet, porta a porta…).</span></div></li>
+      <li><label><input type="checkbox" id="p4"><span class="sr">Concluído</span></label><div class="corpo"><strong>Anote os dados do imóvel.</strong><span class="dica">Natureza do imóvel (urbano, rural ou sem regularização), área total da edificação, área que a empresa vai usar e forma de atuação (estabelecimento fixo, internet, porta a porta…).</span>
+        <div class="nota alerta nota-passo">
+          <h4>Atenção ao complemento do endereço</h4>
+          <p>É o campo que mais fica em branco ou errado. Informe número e complemento completos (sala, loja, apartamento, bloco, galpão) e use o mesmo endereço que está no carnê do IPTU.</p>
+        </div></div></li>
       <li><label><input type="checkbox" id="p5"><span class="sr">Concluído</span></label><div class="corpo"><strong>Decida o tipo de empresa e quem vai conduzir.</strong><span class="dica">O MEI tem um caminho próprio e mais curto: veja a <a href="#mei">trilha do MEI</a>. Nos demais tipos (ME, EPP, LTDA, SLU…), um contador costuma conduzir o registro.</span></div></li>
     </ol>
 
@@ -183,15 +192,15 @@
 
     <ol class="passos" data-grupo="viabilidade">
       <li><label><input type="checkbox" id="v1"><span class="sr">Concluído</span></label><div class="corpo"><strong>Entre no Portal de Serviços da Jucemg com sua conta gov.br.</strong><span class="dica">Em serviços, clique em <b>Viabilidade</b> e depois em <b>Nova Viabilidade</b>.</span>
-        <div class="prints"><figure><button type="button" data-zoom><img src="img/v1.webp" alt="Em Serviços Disponíveis, clique em Viabilidade." loading="lazy"></button><figcaption>Em Serviços Disponíveis, clique em Viabilidade.</figcaption></figure></div></div></li>
+        <div class="prints"><figure><button type="button" data-zoom><img src="img/v1.webp" alt="Em Serviços Disponíveis, clique em Viabilidade." width="817" height="751" loading="lazy"></button><figcaption>Em Serviços Disponíveis, clique em Viabilidade.</figcaption></figure></div></div></li>
       <li><label><input type="checkbox" id="v2"><span class="sr">Concluído</span></label><div class="corpo"><strong>Escolha o tipo de evento.</strong><span class="dica">Constituição para empresa nova; <b>Eventos de Alteração</b> para mudança de endereço, atividade ou outros dados de empresa existente.</span>
-        <div class="prints"><figure><button type="button" data-zoom><img src="img/v2a.webp" alt="Clique em Nova Viabilidade." loading="lazy"></button><figcaption>Clique em Nova Viabilidade.</figcaption></figure><figure><button type="button" data-zoom><img src="img/v2b.webp" alt="Escolha o evento: inscrição (empresa nova) ou alteração." loading="lazy"></button><figcaption>Escolha o evento: inscrição (empresa nova) ou alteração.</figcaption></figure></div></div></li>
-      <li><label><input type="checkbox" id="v3"><span class="sr">Concluído</span></label><div class="corpo"><strong>Preencha o endereço do estabelecimento, com a inscrição imobiliária (IPTU).</strong><span class="dica">Informe também natureza do imóvel (urbano, rural ou sem regularização), área total da edificação, área utilizada e forma de atuação. A inscrição imobiliária é obrigatória na prática: sem ela, o licenciamento é indeferido automaticamente mais adiante.</span>
-        <div class="prints"><figure><button type="button" data-zoom><img src="img/v3.webp" alt="Endereço: natureza do imóvel, IPTU, referência, áreas e forma de atuação." loading="lazy"></button><figcaption>Endereço: natureza do imóvel, IPTU, referência, áreas e forma de atuação.</figcaption></figure></div></div></li>
+        <div class="prints"><figure><button type="button" data-zoom><img src="img/v2a.webp" alt="Clique em Nova Viabilidade." width="1147" height="574" loading="lazy"></button><figcaption>Clique em Nova Viabilidade.</figcaption></figure><figure><button type="button" data-zoom><img src="img/v2b.webp" alt="Escolha o evento: inscrição (empresa nova) ou alteração." width="1147" height="580" loading="lazy"></button><figcaption>Escolha o evento: inscrição (empresa nova) ou alteração.</figcaption></figure></div></div></li>
+      <li><label><input type="checkbox" id="v3"><span class="sr">Concluído</span></label><div class="corpo"><strong>Preencha o endereço do estabelecimento, com a inscrição imobiliária (IPTU).</strong><span class="dica">Informe também natureza do imóvel (urbano, rural ou sem regularização), área total da edificação, área utilizada e forma de atuação. A inscrição imobiliária é obrigatória na prática: sem ela, o licenciamento é indeferido automaticamente mais adiante. Confira o <b>complemento</b> (sala, loja, apartamento, bloco): é o campo que mais se esquece.</span>
+        <div class="prints"><figure><button type="button" data-zoom><img src="img/v3.webp" alt="Endereço: natureza do imóvel, IPTU, referência, áreas e forma de atuação." width="920" height="913" loading="lazy"></button><figcaption>Endereço: natureza do imóvel, IPTU, referência, áreas e forma de atuação.</figcaption></figure></div></div></li>
       <li><label><input type="checkbox" id="v4"><span class="sr">Concluído</span></label><div class="corpo"><strong>Informe as atividades (CNAE) e se cada uma é exercida no local.</strong><span class="dica">Para algumas atividades aparecem perguntas que definem o risco junto aos órgãos de licenciamento. Declare só o que a empresa vai exercer agora e responda com a realidade se cada atividade acontece no endereço: os órgãos conferem depois.</span>
-        <div class="prints"><figure><button type="button" data-zoom><img src="img/v4a.webp" alt="Atividade principal e se ela é exercida no local." loading="lazy"></button><figcaption>Atividade principal e se ela é exercida no local.</figcaption></figure><figure><button type="button" data-zoom><img src="img/v4b.webp" alt="Perguntas gerais de regulação urbana." loading="lazy"></button><figcaption>Perguntas gerais de regulação urbana.</figcaption></figure></div></div></li>
+        <div class="prints"><figure><button type="button" data-zoom><img src="img/v4a.webp" alt="Atividade principal e se ela é exercida no local." width="919" height="502" loading="lazy"></button><figcaption>Atividade principal e se ela é exercida no local.</figcaption></figure><figure><button type="button" data-zoom><img src="img/v4b.webp" alt="Perguntas gerais de regulação urbana." width="937" height="521" loading="lazy"></button><figcaption>Perguntas gerais de regulação urbana.</figcaption></figure></div></div></li>
       <li><label><input type="checkbox" id="v5"><span class="sr">Concluído</span></label><div class="corpo"><strong>Confirme e conclua. Guarde o protocolo que começa com <span class="proto">MGP</span>.</strong><span class="dica">É esse número que a Prefeitura recebe no SINAL e que vale para o registro.</span>
-        <div class="prints"><figure><button type="button" data-zoom><img src="img/v5.webp" alt="Revise, marque a declaração e clique em Concluir." loading="lazy"></button><figcaption>Revise, marque a declaração e clique em Concluir.</figcaption></figure></div></div></li>
+        <div class="prints"><figure><button type="button" data-zoom><img src="img/v5.webp" alt="Revise, marque a declaração e clique em Concluir." width="943" height="734" loading="lazy"></button><figcaption>Revise, marque a declaração e clique em Concluir.</figcaption></figure></div></div></li>
       <li><label><input type="checkbox" id="v6"><span class="sr">Concluído</span></label><div class="corpo"><strong>Acompanhe o resultado: deferida ou indeferida.</strong><span class="dica">Atividades sempre permitidas no local são deferidas automaticamente. As demais são analisadas por um servidor da Prefeitura com base no zoneamento. Se alguma atividade não for permitida, a viabilidade é indeferida e é preciso fazer uma nova consulta.</span></div></li>
     </ol>
 
@@ -217,7 +226,7 @@
       <summary>Empresa já existente sem inscrição imobiliária: evento 995</summary>
       <div>
         <p>Se a empresa foi registrada sem a inscrição imobiliária, use o evento <b>995 – Alteração de dados do imóvel</b>. Ele é gratuito e atualiza o integrador estadual.</p>
-        <div class="prints"><figure><button type="button" data-zoom><img src="img/e995a.webp" alt="Marque 995 – Alteração de dados do imóvel." loading="lazy"></button><figcaption>Marque 995 – Alteração de dados do imóvel.</figcaption></figure><figure><button type="button" data-zoom><img src="img/e995b.webp" alt="Selecione CNPJ, informe o número e pesquise." loading="lazy"></button><figcaption>Selecione CNPJ, informe o número e pesquise.</figcaption></figure></div>
+        <div class="prints"><figure><button type="button" data-zoom><img src="img/e995a.webp" alt="Marque 995 – Alteração de dados do imóvel." width="1134" height="881" loading="lazy"></button><figcaption>Marque 995 – Alteração de dados do imóvel.</figcaption></figure><figure><button type="button" data-zoom><img src="img/e995b.webp" alt="Selecione CNPJ, informe o número e pesquise." width="1160" height="479" loading="lazy"></button><figcaption>Selecione CNPJ, informe o número e pesquise.</figcaption></figure></div>
         <ol>
           <li>Portal de Serviços → <b>Viabilidade</b> → <b>Nova Viabilidade</b> → <b>Eventos de Alteração</b>.</li>
           <li>Selecione <b>995 – Alteração de dados do imóvel</b>, marque CNPJ, informe o número e avance.</li>
@@ -246,7 +255,7 @@
       <li><label><input type="checkbox" id="a2"><span class="sr">Concluído</span></label><div class="corpo"><strong>Protocole o registro na Jucemg pelo Portal de Serviços.</strong><span class="dica">Ato constitutivo, para empresa nova, ou ato de alteração, com a documentação pedida pelo órgão de registro.</span></div></li>
       <li><label><input type="checkbox" id="a3"><span class="sr">Concluído</span></label><div class="corpo"><strong>Com o registro deferido, a empresa recebe NIRE e CNPJ.</strong></div></li>
       <li><label><input type="checkbox" id="a4"><span class="sr">Concluído</span></label><div class="corpo"><strong>O SINAL importa o processo e gera a Inscrição Municipal.</strong><span class="dica">Isso acontece automaticamente na etapa "Validação de Cadastro", que libera o Comprovante de Inscrição e Situação Cadastral. O cadastro da empresa no SINAL só é atualizado depois que essa etapa termina.</span>
-        <div class="prints"><figure><button type="button" data-zoom><img src="img/a4.webp" alt="No SINAL, a etapa Validação de Cadastro aparece como Deferido." loading="lazy"></button><figcaption>No SINAL, a etapa Validação de Cadastro aparece como Deferido.</figcaption></figure></div></div></li>
+        <div class="prints"><figure><button type="button" data-zoom><img src="img/a4.webp" alt="No SINAL, a etapa Validação de Cadastro aparece como Deferido." width="1700" height="400" loading="lazy"></button><figcaption>No SINAL, a etapa Validação de Cadastro aparece como Deferido.</figcaption></figure></div></div></li>
       <li><label><input type="checkbox" id="a5"><span class="sr">Concluído</span></label><div class="corpo"><strong>Siga para o licenciamento.</strong><span class="dica">Mesmo no baixo risco, é preciso entrar no SINAL para responder o questionário e emitir a Inscrição Municipal e a dispensa.</span></div></li>
     </ol>
 
@@ -283,15 +292,15 @@
 
     <ol class="passos" data-grupo="licenciamento">
       <li><label><input type="checkbox" id="l1"><span class="sr">Concluído</span></label><div class="corpo"><strong>No Portal de Serviços, clique em Licenciamento, informe o CNPJ e clique em Pesquisar.</strong><span class="dica">Depois, clique em <b>Iniciar licenciamento</b>.</span>
-        <div class="prints"><figure><button type="button" data-zoom><img src="img/l1a.webp" alt="No Portal de Serviços, clique em Licenciamento." loading="lazy"></button><figcaption>No Portal de Serviços, clique em Licenciamento.</figcaption></figure><figure><button type="button" data-zoom><img src="img/l1b.webp" alt="Informe o CNPJ e clique em Pesquisar." loading="lazy"></button><figcaption>Informe o CNPJ e clique em Pesquisar.</figcaption></figure></div></div></li>
+        <div class="prints"><figure><button type="button" data-zoom><img src="img/l1a.webp" alt="No Portal de Serviços, clique em Licenciamento." width="558" height="241" loading="lazy"></button><figcaption>No Portal de Serviços, clique em Licenciamento.</figcaption></figure><figure><button type="button" data-zoom><img src="img/l1b.webp" alt="Informe o CNPJ e clique em Pesquisar." width="1182" height="452" loading="lazy"></button><figcaption>Informe o CNPJ e clique em Pesquisar.</figcaption></figure></div></div></li>
       <li><label><input type="checkbox" id="l2"><span class="sr">Concluído</span></label><div class="corpo"><strong>Responda às perguntas de risco.</strong><span class="dica">Anote as respostas: você vai repeti-las no SINAL.</span>
-        <div class="prints"><figure><button type="button" data-zoom><img src="img/l2.webp" alt="Avaliação do grau de risco: responda Sim ou Não." loading="lazy"></button><figcaption>Avaliação do grau de risco: responda Sim ou Não.</figcaption></figure></div></div></li>
+        <div class="prints"><figure><button type="button" data-zoom><img src="img/l2.webp" alt="Avaliação do grau de risco: responda Sim ou Não." width="1151" height="915" loading="lazy"></button><figcaption>Avaliação do grau de risco: responda Sim ou Não.</figcaption></figure></div></div></li>
       <li id="l3-passo"><label><input type="checkbox" id="l3"><span class="sr">Concluído</span></label><div class="corpo"><strong>Em "Órgãos Estaduais", a Prefeitura aparece como "Em exigência". Clique em Visualizar.</strong><span class="dica">No campo Observação, clique no link que leva ao SINAL.</span>
-        <div class="prints"><figure><button type="button" data-zoom><img src="img/l3a.webp" alt="A Prefeitura aparece Em exigência. Clique em Visualizar." loading="lazy"></button><figcaption>A Prefeitura aparece Em exigência. Clique em Visualizar.</figcaption></figure><figure><button type="button" data-zoom><img src="img/l3b.webp" alt="No campo Observação, siga o link para o SINAL." loading="lazy"></button><figcaption>No campo Observação, siga o link para o SINAL.</figcaption></figure></div></div></li>
+        <div class="prints"><figure><button type="button" data-zoom><img src="img/l3a.webp" alt="A Prefeitura aparece Em exigência. Clique em Visualizar." width="1131" height="396" loading="lazy"></button><figcaption>A Prefeitura aparece Em exigência. Clique em Visualizar.</figcaption></figure><figure><button type="button" data-zoom><img src="img/l3b.webp" alt="No campo Observação, siga o link para o SINAL." width="1166" height="758" loading="lazy"></button><figcaption>No campo Observação, siga o link para o SINAL.</figcaption></figure></div></div></li>
       <li><label><input type="checkbox" id="l4"><span class="sr">Concluído</span></label><div class="corpo"><strong>Entre no SINAL com gov.br e vá em Acompanhamento → Meus processos.</strong><span class="dica">Digite o CNPJ ou clique em Pesquisar para ver todos os processos ligados ao seu CPF. Se a tela cortar informações, reduza o zoom do navegador para 80%.</span>
-        <div class="prints"><figure><button type="button" data-zoom><img src="img/l4a.webp" alt="No SINAL, clique em Meus processos." loading="lazy"></button><figcaption>No SINAL, clique em Meus processos.</figcaption></figure><figure><button type="button" data-zoom><img src="img/l4b.webp" alt="Informe o CNPJ nos filtros e pesquise." loading="lazy"></button><figcaption>Informe o CNPJ nos filtros e pesquise.</figcaption></figure></div></div></li>
+        <div class="prints"><figure><button type="button" data-zoom><img src="img/l4a.webp" alt="No SINAL, clique em Meus processos." width="1348" height="718" loading="lazy"></button><figcaption>No SINAL, clique em Meus processos.</figcaption></figure><figure><button type="button" data-zoom><img src="img/l4b.webp" alt="Informe o CNPJ nos filtros e pesquise." width="1500" height="644" loading="lazy"></button><figcaption>Informe o CNPJ nos filtros e pesquise.</figcaption></figure></div></div></li>
       <li><label><input type="checkbox" id="l5"><span class="sr">Concluído</span></label><div class="corpo"><strong>Clique na seta à esquerda do protocolo e depois em "Pendente do usuário".</strong><span class="dica">As ações ficam na coluna Situação. Responda o questionário com as mesmas respostas dadas no Portal, clique em Salvar e em OK. <a href="#situacoes">O que significa cada situação?</a></span>
-        <div class="prints"><figure><button type="button" data-zoom><img src="img/l5a.webp" alt="Abra as etapas pela seta e clique em Pendente do Usuário." loading="lazy"></button><figcaption>Abra as etapas pela seta e clique em Pendente do Usuário.</figcaption></figure><figure><button type="button" data-zoom><img src="img/l5b.webp" alt="Responda o questionário e salve." loading="lazy"></button><figcaption>Responda o questionário e salve.</figcaption></figure></div></div></li>
+        <div class="prints"><figure><button type="button" data-zoom><img src="img/l5a.webp" alt="Abra as etapas pela seta e clique em Pendente do Usuário." width="1500" height="689" loading="lazy"></button><figcaption>Abra as etapas pela seta e clique em Pendente do Usuário.</figcaption></figure><figure><button type="button" data-zoom><img src="img/l5b.webp" alt="Responda o questionário e salve." width="1500" height="670" loading="lazy"></button><figcaption>Responda o questionário e salve.</figcaption></figure></div></div></li>
       <li><label><input type="checkbox" id="l6"><span class="sr">Concluído</span></label><div class="corpo"><strong>Pesquise o CNPJ de novo e siga o caminho do seu nível de risco, abaixo.</strong></div></li>
     </ol>
 
@@ -313,7 +322,7 @@
       <ul class="fluxo">
         <li><b>Responda o questionário e salve.</b><span class="dica">Não há análise de órgãos.</span></li>
         <li id="r1-pdf"><b>Pesquise o CNPJ e clique no ícone de PDF.</b><span class="dica">Os documentos já estão disponíveis.</span>
-          <div class="prints"><figure><button type="button" data-zoom><img src="img/r1a.webp" alt="Clique no ícone de PDF, na coluna Documentos." loading="lazy"></button><figcaption>Clique no ícone de PDF, na coluna Documentos.</figcaption></figure><figure><button type="button" data-zoom><img src="img/r1b.webp" alt="Documentos liberados no risco I." loading="lazy"></button><figcaption>Documentos liberados no risco I.</figcaption></figure></div></li>
+          <div class="prints"><figure><button type="button" data-zoom><img src="img/r1a.webp" alt="Clique no ícone de PDF, na coluna Documentos." width="1500" height="569" loading="lazy"></button><figcaption>Clique no ícone de PDF, na coluna Documentos.</figcaption></figure><figure><button type="button" data-zoom><img src="img/r1b.webp" alt="Documentos liberados no risco I." width="1500" height="427" loading="lazy"></button><figcaption>Documentos liberados no risco I.</figcaption></figure></div></li>
       </ul>
       <div class="docs"><span>Inscrição Municipal</span><span>Dispensa de alvará</span><span>Dispensa dos Bombeiros</span></div>
     </div>
@@ -323,7 +332,7 @@
       <ul class="fluxo">
         <li><b>Responda o questionário e salve.</b></li>
         <li id="r2-pdf"><b>Pesquise o CNPJ e clique no ícone de PDF.</b><span class="dica">O alvará é liberado sem análise manual.</span>
-          <div class="prints"><figure><button type="button" data-zoom><img src="img/r2.webp" alt="Risco II: comprovante, certificado provisório dos Bombeiros e alvará." loading="lazy"></button><figcaption>Risco II: comprovante, certificado provisório dos Bombeiros e alvará.</figcaption></figure></div></li>
+          <div class="prints"><figure><button type="button" data-zoom><img src="img/r2.webp" alt="Risco II: comprovante, certificado provisório dos Bombeiros e alvará." width="1293" height="409" loading="lazy"></button><figcaption>Risco II: comprovante, certificado provisório dos Bombeiros e alvará.</figcaption></figure></div></li>
         <li><b>Bombeiros:</b><span class="dica">o sistema procura um CLCB no endereço informado. Se encontrar, ele aparece no processo; se não, é emitida uma licença provisória.</span></li>
       </ul>
       <div class="docs"><span>Inscrição Municipal</span><span>Alvará de localização e funcionamento</span><span>CLCB ou licença provisória</span></div>
@@ -334,15 +343,15 @@
       <h4>Risco III: análise dos órgãos e do Controle de Posturas</h4>
       <ul class="fluxo">
         <li id="r3-quest"><b>Responda o questionário de cada órgão.</b><span class="dica">Em "Pendente do usuário", na linha de cada órgão: Vigilância Sanitária, Meio Ambiente, Corpo de Bombeiros e, quando houver, Agropecuária.</span>
-          <div class="prints"><figure><button type="button" data-zoom><img src="img/r3a.webp" alt="Um questionário pendente para cada órgão." loading="lazy"></button><figcaption>Um questionário pendente para cada órgão.</figcaption></figure></div></li>
+          <div class="prints"><figure><button type="button" data-zoom><img src="img/r3a.webp" alt="Um questionário pendente para cada órgão." width="1500" height="653" loading="lazy"></button><figcaption>Um questionário pendente para cada órgão.</figcaption></figure></div></li>
         <li><b>Aguarde a análise.</b><span class="dica">Se algum órgão pedir documentos, você recebe um e-mail e a situação muda para "Pendente de documentação".</span></li>
         <li id="r3-doc"><b>Anexe o que foi pedido.</b><span class="dica">Clique em "Pendente de documentação" na linha do órgão → Incluir → Escolher → Enviar → Salvar. Aceite o Termo de Responsabilidade e clique em Finalizar. Cada arquivo pode ter até 50 MB, em qualquer formato.</span>
-          <div class="prints"><figure><button type="button" data-zoom><img src="img/r3b.webp" alt="Pendente de documentação na linha do órgão." loading="lazy"></button><figcaption>Pendente de documentação na linha do órgão.</figcaption></figure><figure><button type="button" data-zoom><img src="img/r3c.webp" alt="Incluir → Escolher → Enviar." loading="lazy"></button><figcaption>Incluir → Escolher → Enviar.</figcaption></figure><figure><button type="button" data-zoom><img src="img/r3d.webp" alt="Aceite o Termo de Responsabilidade e clique em Finalizar." loading="lazy"></button><figcaption>Aceite o Termo de Responsabilidade e clique em Finalizar.</figcaption></figure></div></li>
+          <div class="prints"><figure><button type="button" data-zoom><img src="img/r3b.webp" alt="Pendente de documentação na linha do órgão." width="1500" height="696" loading="lazy"></button><figcaption>Pendente de documentação na linha do órgão.</figcaption></figure><figure><button type="button" data-zoom><img src="img/r3c.webp" alt="Incluir → Escolher → Enviar." width="1500" height="554" loading="lazy"></button><figcaption>Incluir → Escolher → Enviar.</figcaption></figure><figure><button type="button" data-zoom><img src="img/r3d.webp" alt="Aceite o Termo de Responsabilidade e clique em Finalizar." width="1500" height="577" loading="lazy"></button><figcaption>Aceite o Termo de Responsabilidade e clique em Finalizar.</figcaption></figure></div></li>
         <li><b>Bombeiros:</b><span class="dica">apresente AVCB ou CLCB vigente, emitido no sistema do Corpo de Bombeiros por profissional habilitado (engenheiro ou técnico em segurança do trabalho).</span></li>
         <li id="r3-posturas"><b>Controle de Posturas libera o alvará.</b><span class="dica">Depois que todos os órgãos aprovam, o processo segue para o Controle de Posturas. Se houver taxa, baixe a guia, pague e anexe o comprovante.</span>
-          <div class="prints"><figure><button type="button" data-zoom><img src="img/r3e.webp" alt="Controle de Posturas pendente de documentação." loading="lazy"></button><figcaption>Controle de Posturas pendente de documentação.</figcaption></figure><figure><button type="button" data-zoom><img src="img/r3f.webp" alt="Baixe a guia nos anexos e depois anexe o comprovante." loading="lazy"></button><figcaption>Baixe a guia nos anexos e depois anexe o comprovante.</figcaption></figure></div></li>
+          <div class="prints"><figure><button type="button" data-zoom><img src="img/r3e.webp" alt="Controle de Posturas pendente de documentação." width="1500" height="771" loading="lazy"></button><figcaption>Controle de Posturas pendente de documentação.</figcaption></figure><figure><button type="button" data-zoom><img src="img/r3f.webp" alt="Baixe a guia nos anexos e depois anexe o comprovante." width="1500" height="708" loading="lazy"></button><figcaption>Baixe a guia nos anexos e depois anexe o comprovante.</figcaption></figure></div></li>
         <li id="r3-fim"><b>Receba o e-mail de conclusão e abra os documentos no PDF.</b>
-          <div class="prints"><figure><button type="button" data-zoom><img src="img/r3g.webp" alt="Documentos finais: comprovante de inscrição e alvará definitivo." loading="lazy"></button><figcaption>Documentos finais: comprovante de inscrição e alvará definitivo.</figcaption></figure></div></li>
+          <div class="prints"><figure><button type="button" data-zoom><img src="img/r3g.webp" alt="Documentos finais: comprovante de inscrição e alvará definitivo." width="1500" height="297" loading="lazy"></button><figcaption>Documentos finais: comprovante de inscrição e alvará definitivo.</figcaption></figure></div></li>
       </ul>
       <div class="docs"><span>Inscrição Municipal</span><span>Alvará de localização e funcionamento</span></div>
       <p class="dica">A análise da Vigilância Sanitária e do Meio Ambiente aqui serve para liberar o alvará. A licença sanitária e a licença ambiental, quando a atividade exige, são pedidas à parte: veja <a href="#depois">Depois do alvará</a>.</p>
@@ -351,7 +360,7 @@
     <details class="extra" id="xantiga">
       <summary>Empresa registrada antes do SINAL: como gerar o alvará digital</summary>
       <div>
-        <div class="prints"><figure><button type="button" data-zoom><img src="img/oa.webp" alt="Consultar Inscrição Municipal." loading="lazy"></button><figcaption>Consultar Inscrição Municipal.</figcaption></figure><figure><button type="button" data-zoom><img src="img/ob.webp" alt="Licenciamento, no menu Empresas." loading="lazy"></button><figcaption>Licenciamento, no menu Empresas.</figcaption></figure><figure><button type="button" data-zoom><img src="img/oc.webp" alt="Informe CNPJ e Inscrição Municipal e clique em Solicitar." loading="lazy"></button><figcaption>Informe CNPJ e Inscrição Municipal e clique em Solicitar.</figcaption></figure></div>
+        <div class="prints"><figure><button type="button" data-zoom><img src="img/oa.webp" alt="Consultar Inscrição Municipal." width="1500" height="651" loading="lazy"></button><figcaption>Consultar Inscrição Municipal.</figcaption></figure><figure><button type="button" data-zoom><img src="img/ob.webp" alt="Licenciamento, no menu Empresas." width="1500" height="676" loading="lazy"></button><figcaption>Licenciamento, no menu Empresas.</figcaption></figure><figure><button type="button" data-zoom><img src="img/oc.webp" alt="Informe CNPJ e Inscrição Municipal e clique em Solicitar." width="1500" height="737" loading="lazy"></button><figcaption>Informe CNPJ e Inscrição Municipal e clique em Solicitar.</figcaption></figure></div>
         <ol>
           <li>No SINAL, consulte o número em <b>Consultar Inscrição Municipal</b>, conferindo todos os caracteres.</li>
           <li>Clique em <b>Licenciamento</b> e informe o CNPJ e a Inscrição Municipal.</li>
@@ -365,7 +374,7 @@
     <details class="extra" id="xcb">
       <summary>Responder o questionário dos Bombeiros de novo</summary>
       <div>
-        <div class="prints"><figure><button type="button" data-zoom><img src="img/cb.webp" alt="Na etapa dos Bombeiros, clique em Finalizado." loading="lazy"></button><figcaption>Na etapa dos Bombeiros, clique em Finalizado.</figcaption></figure></div>
+        <div class="prints"><figure><button type="button" data-zoom><img src="img/cb.webp" alt="Na etapa dos Bombeiros, clique em Finalizado." width="1442" height="621" loading="lazy"></button><figcaption>Na etapa dos Bombeiros, clique em Finalizado.</figcaption></figure></div>
         <ol>
           <li>Em Acompanhamento, clique na seta do protocolo.</li>
           <li>Na etapa dos Bombeiros, clique em <b>Finalizado</b> (em azul).</li>
@@ -379,7 +388,7 @@
       <summary>Onde ver todas as licenças emitidas</summary>
       <div>
         <p>No Portal de Serviços da Jucemg, menu Licenciamento, aparecem a Inscrição Municipal, a dispensa ou alvará, a licença dos Bombeiros (riscos I e II) e a licença sanitária, quando o município adere ao licenciamento sanitário. Clique em <b>Visualizar</b> em cada uma.</p>
-        <div class="prints"><figure><button type="button" data-zoom><img src="img/lic.webp" alt="Licença consultada no Portal de Serviços." loading="lazy"></button><figcaption>Licença consultada no Portal de Serviços.</figcaption></figure></div>
+        <div class="prints"><figure><button type="button" data-zoom><img src="img/lic.webp" alt="Licença consultada no Portal de Serviços." width="1026" height="719" loading="lazy"></button><figcaption>Licença consultada no Portal de Serviços.</figcaption></figure></div>
         <p><a href="https://portalservicos.jucemg.mg.gov.br/licenciamento-web/pages/licenciamento/consultarLicenciamentoEmpresa.jsf" target="_blank" rel="noopener">Consultar licenciamento da empresa</a></p>
       </div>
     </details>
@@ -468,7 +477,8 @@
   <input class="busca" id="busca" type="search" placeholder="Ex.: indeferido, permissão, Bombeiros, zoom" autocomplete="off">
   <div class="faq" id="faq">
     <details id="p-lic"><summary><span class="k">LIC</span>Meu licenciamento foi indeferido automaticamente</summary><div>
-      <p>Quase sempre falta a inscrição imobiliária na viabilidade. Faça uma viabilidade com o evento <b>995 – Alteração de dados do imóvel</b> (gratuito), informe o IPTU e, depois do deferimento, peça o licenciamento de novo. O passo a passo está na <a href="#x995">Etapa 1</a>.</p></div></details>
+      <p>Quase sempre falta a inscrição imobiliária na viabilidade. Faça uma viabilidade com o evento <b>995 – Alteração de dados do imóvel</b> (gratuito), informe o IPTU e, depois do deferimento, peça o licenciamento de novo. O passo a passo está na <a href="#x995">Etapa 1</a>.</p>
+      <p>Não sabe o número? Veja <a href="#contato-iptu">como consultar com o Cadastro Imobiliário</a>.</p></div></details>
     <details id="p-acesso"><summary><span class="k">ACESSO</span>"Você não possui permissão para visualizar os dados desta empresa"</summary><div>
       <ul>
         <li>Só sócios e o contabilista registrados no CNPJ veem os processos.</li>
@@ -510,31 +520,41 @@
 <section class="bloco wrap" id="depois" aria-labelledby="h-depois">
   <p class="eyebrow"><svg class="i-mais"><use href="#mais"/></svg>Depois do alvará</p>
   <h2 id="h-depois">Alvará na mão. <span class="enfase">E agora?</span></h2>
-  <p class="sub">A dispensa e o alvará liberam o funcionamento, mas não resolvem tudo. Confira o que continua valendo.</p>
+  <div class="alerta-forte" role="note">
+    <svg class="alerta-icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4.5M12 17.5v.01"/></svg>
+    <p><strong>A dispensa e o alvará liberam o funcionamento, mas <span class="sublinha">não resolvem tudo</span>.</strong>
+    Depois que o documento sai, ainda valem <b>licenças, fiscalização e taxas</b>. Confira antes de abrir as portas.</p>
+  </div>
   <div class="cartoes cartoes-3">
-    <article class="cartao">
-      <h3>Licença sanitária e ambiental são à parte</h3>
-      <p>O SINAL emite a Inscrição Municipal e a dispensa ou o alvará de funcionamento. Se a atividade exige licença sanitária ou licença ambiental, ela continua sendo pedida diretamente na Prefeitura.</p>
+    <article class="cartao cartao-destaque">
+      <svg class="cartao-icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="m9 14 2 2 4-4"/></svg>
+      <h3>Licença sanitária e ambiental <span class="marca-texto">são à parte</span></h3>
+      <p>O SINAL emite a Inscrição Municipal e a dispensa ou o alvará de funcionamento. Se a atividade exige <strong>licença sanitária</strong> ou <strong>licença ambiental</strong>, ela continua sendo pedida <strong class="ama">diretamente na Prefeitura</strong>.</p>
     </article>
     <article class="cartao">
+      <svg class="cartao-icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c.6 3 4.5 5.2 4.5 9.5a4.5 4.5 0 0 1-9 0c0-2.2 1.2-3.6 2.4-4.6 0 2 .9 3.1 2.1 3.1 0-3-1-5 0-8z"/></svg>
       <h3>Bombeiros em dia</h3>
-      <p>Atividades com exigência dos Bombeiros precisam de AVCB ou CLCB vigente, emitido no sistema do Corpo de Bombeiros. Quando o certificado vence, a Prefeitura pode cobrar o novo.</p>
+      <p>Atividades com exigência dos Bombeiros precisam de <strong class="ama">AVCB ou CLCB vigente</strong>, emitido no sistema do Corpo de Bombeiros. Quando o certificado vence, a Prefeitura <strong>pode cobrar o novo</strong>.</p>
     </article>
     <article class="cartao">
-      <h3>A fiscalização pode vir a qualquer momento</h3>
-      <p>Os documentos saem com base no que você declarou. A Prefeitura pode vistoriar, pedir documentos e bloquear a dispensa ou o alvará se encontrar irregularidade.</p>
+      <svg class="cartao-icone" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+      <h3>A fiscalização pode vir <span class="marca-texto">a qualquer momento</span></h3>
+      <p>Os documentos saem com base <strong>no que você declarou</strong>. A Prefeitura pode vistoriar, pedir documentos e <strong class="ama">bloquear a dispensa ou o alvará</strong> se encontrar irregularidade.</p>
     </article>
     <article class="cartao">
-      <h3>O alvará não vence</h3>
-      <p>Emitido pelo Redesim + Livre, ele não tem data de validade (Lei 11.598/2007, art. 5-A). Não use o menu "Renovação de Alvará".</p>
+      <svg class="cartao-icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 9a3 3 0 1 0 0 6c2.2 0 3.3-3 5.5-3s3.3 3 5.5 3a3 3 0 1 0 0-6c-2.2 0-3.3 3-5.5 3S8.7 9 6.5 9z"/></svg>
+      <h3>O alvará <span class="marca-texto">não vence</span></h3>
+      <p>Emitido pelo Redesim + Livre, ele <strong>não tem data de validade</strong> (Lei 11.598/2007, art. 5-A). <strong class="ama">Não use o menu "Renovação de Alvará".</strong></p>
     </article>
     <article class="cartao">
-      <h3>As taxas continuam</h3>
-      <p>As taxas municipais, como a de fiscalização, podem continuar sendo cobradas; só não podem travar a emissão do alvará de baixo e médio risco. O MEI é isento das taxas de abertura e funcionamento.</p>
+      <svg class="cartao-icone" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M14.6 9.4c-.5-.9-1.4-1.4-2.6-1.4-1.5 0-2.5.8-2.5 2s1 1.6 2.5 2 2.5.8 2.5 2-1 2-2.5 2c-1.2 0-2.1-.5-2.6-1.4M12 6.3v1.7M12 16v1.7"/></svg>
+      <h3>As taxas <span class="marca-texto">continuam</span></h3>
+      <p>As taxas municipais, como a de fiscalização, <strong>podem continuar sendo cobradas</strong>; só não podem travar a emissão do alvará de baixo e médio risco. <strong class="ama">O MEI é isento</strong> das taxas de abertura e funcionamento.</p>
     </article>
     <article class="cartao">
-      <h3>Mudou algo? Atualize</h3>
-      <p>Os documentos valem para os dados declarados. Se mudar endereço, atividade ou área, faça uma <a href="#alterar">alteração</a>.</p>
+      <svg class="cartao-icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.5-4.5L4 8"/><path d="M4 3.5V8h4.5"/><path d="M4 13a8 8 0 0 0 14.5 4.5L20 16"/><path d="M20 20.5V16h-4.5"/></svg>
+      <h3>Mudou algo? <span class="marca-texto">Atualize</span></h3>
+      <p>Os documentos valem <strong>para os dados declarados</strong>. Se mudar endereço, atividade ou área, <strong class="ama">faça uma <a href="#alterar">alteração</a></strong>.</p>
     </article>
   </div>
 
@@ -580,7 +600,12 @@
       <p class="eyebrow"><svg class="i-mais"><use href="#mais"/></svg>Atendimento</p>
       <h2 id="h-contato">Travou? <span class="enfase">Fale com a gente</span></h2>
       <p class="sub">A Sala Mineira do Empreendedor de Lavras orienta empreendedores e contadores em todas as etapas.</p>
-      <dl class="contato-dados" id="contato-dados"></dl>
+      <dl class="contato-dados" id="contato-dados" data-contato="sala"></dl>
+      <div class="contato-extra" id="contato-iptu">
+        <h3>Dúvidas sobre IPTU e inscrição imobiliária</h3>
+        <p class="dica">Cadastro Imobiliário da Prefeitura de Lavras.</p>
+        <dl class="contato-dados" data-contato="iptu"></dl>
+      </div>
     </div>
     <div class="sistemas">
       <p class="sistemas-tit">Sistemas oficiais</p>
@@ -620,9 +645,19 @@
 </footer>
 
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Print ampliado" hidden>
-  <div class="lb-topo"><button class="lb-fechar" type="button">Fechar</button></div>
+  <div class="lb-topo">
+    <span class="lb-cont" aria-live="polite"></span>
+    <div class="lb-acoes">
+      <button class="lb-btn lb-zoom" type="button" aria-pressed="false">Ampliar</button>
+      <button class="lb-btn lb-fechar" type="button">Fechar</button>
+    </div>
+  </div>
   <div class="lb-img"><img alt=""></div>
-  <p class="lb-leg"></p>
+  <div class="lb-base">
+    <button class="lb-btn lb-ant" type="button" aria-label="Print anterior">← <span>Anterior</span></button>
+    <p class="lb-leg"></p>
+    <button class="lb-btn lb-prox" type="button" aria-label="Próximo print"><span>Próximo</span> →</button>
+  </div>
 </div>
 </body>
 </html>

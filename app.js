@@ -2,17 +2,27 @@
   "use strict";
 
   /*
-    Contato da Sala Mineira do Empreendedor de Lavras.
-    Preencha aqui: campo vazio não aparece no site. Enquanto tudo estiver vazio,
-    o site mostra só a orientação de procurar a Sala Mineira na Prefeitura.
-    Dados passados pela Superintendência em 15/10/2026.
+    Contatos de atendimento. Cada um aparece onde houver data-contato="<chave>" no HTML.
+    Campo vazio não aparece no site. Dados passados pela Superintendência em 15/10/2026.
   */
-  var CONTATO = {
-    endereco: "",  // ainda não informado; ex.: "Rua Exemplo, 100, Centro"
-    horario: "Segunda a sexta, das 12h às 18h",
-    telefone: "",  // ex.: "(35) 3000-0000"
-    whatsapp: "(35) 3694-4067",  // com DDD; o link do botão usa só os números
-    emails: ["saladoempreendedor@lavras.mg.gov.br", "minasfacilalvara@lavras.mg.gov.br"]
+  var CONTATOS = {
+    // Sala Mineira do Empreendedor de Lavras
+    sala: {
+      endereco: "",  // ainda não informado; ex.: "Rua Exemplo, 100, Centro"
+      horario: "Segunda a sexta, das 12h às 18h",
+      telefone: "",  // ex.: "(35) 3000-0000"
+      whatsapp: "(35) 3694-4067",  // com DDD; o link do botão usa só os números
+      emails: ["saladoempreendedor@lavras.mg.gov.br", "minasfacilalvara@lavras.mg.gov.br"],
+      vazio: "Procure a Sala Mineira do Empreendedor na Prefeitura de Lavras."
+    },
+    // Cadastro Imobiliário (IPTU). O perfil do WhatsApp cita pmllavras.mg.gov.br, mas esse
+    // domínio não existe; o site da Prefeitura é lavras.mg.gov.br.
+    iptu: {
+      endereco: "Av. Doutor Silvio Menicucci, 1575, Presidente Kennedy (Prefeitura)",
+      horario: "Das 12h às 18h",
+      whatsapp: "(35) 3694-4047",
+      emails: ["iptu@lavras.mg.gov.br"]
+    }
   };
 
   // O que cada situação do Portal de Serviços e do SINAL quer dizer, e o que fazer.
@@ -176,7 +186,9 @@
       var extra = alvo.closest(".paineis") ? $(".trilho").offsetHeight : 0;
       y = alvo.getBoundingClientRect().top + scrollY - hTopo - extra - 16;
     }
-    scrollTo({ top: Math.max(0, y), behavior: reduzido ? "auto" : comportamento || "smooth" });
+    // salto longo vai direto: rolar suave por meia página de distância só confunde
+    var longe = Math.abs(y - scrollY) > 5000;
+    scrollTo({ top: Math.max(0, y), behavior: reduzido || longe ? "auto" : comportamento || "smooth" });
     return true;
   }
   document.addEventListener("click", function (e) {
@@ -343,28 +355,121 @@
     document.head.appendChild(el("script", { type: "application/ld+json" }, [JSON.stringify(ld)]));
   } catch (e) {}
 
-  // ---------- prints ampliados ----------
-  var lb = $("#lightbox"), lbImg = $("img", lb), lbLeg = $(".lb-leg", lb), lbFechar = $(".lb-fechar", lb), ultimo = null;
-  function abrirLb(img, botao) {
-    lbImg.src = img.src; lbImg.alt = img.alt; lbLeg.textContent = img.alt;
-    lb.hidden = false; ultimo = botao;
+  // ---------- visualizador de prints ----------
+  // Abre a imagem inteira; tocar/clicar num ponto amplia ali até o tamanho real (ou mais,
+  // em telas grandes). Ampliado, arrasta-se com o mouse ou o dedo. As setas passam pelos
+  // prints do mesmo passo.
+  var lb = $("#lightbox"), lbArea = $(".lb-img", lb), lbImg = $("img", lb), lbLeg = $(".lb-leg", lb),
+    lbCont = $(".lb-cont", lb), lbZoom = $(".lb-zoom", lb), lbFechar = $(".lb-fechar", lb),
+    lbAnt = $(".lb-ant", lb), lbProx = $(".lb-prox", lb);
+  var galeria = [], atual = 0, ampliado = false, ultimo = null, arrasto = null;
+  var toque = matchMedia("(hover: none)").matches;
+
+  function larguraAmpliada() {
+    var nw = lbImg.naturalWidth || 1200, cw = lbArea.clientWidth;
+    // tamanho real; em tela grande, um pouco mais; nunca mais que o dobro do original
+    return Math.min(Math.max(nw, cw * 1.25), nw * 2);
+  }
+  function setAmpliado(on, fx, fy) {
+    ampliado = on;
+    lb.classList.toggle("zoom", on);
+    lbZoom.textContent = on ? "Ver inteiro" : "Ampliar";
+    lbZoom.setAttribute("aria-pressed", String(on));
+    var dica = $(".lb-dica", lb);
+    if (dica) dica.textContent = on
+      ? (toque ? "Arraste para mover. Toque para ver inteiro." : "Arraste para mover. Clique para ver inteiro.")
+      : (toque ? "Toque no ponto que quer ver de perto." : "Clique no ponto que quer ver de perto.");
+    if (!on) { lbImg.style.width = ""; return; }
+    var w = larguraAmpliada();
+    lbImg.style.width = w + "px";
+    var h = w * (lbImg.naturalHeight / lbImg.naturalWidth || 0.5);
+    lbArea.scrollLeft = (fx === undefined ? 0 : fx * w) - (fx === undefined ? 0 : lbArea.clientWidth / 2);
+    lbArea.scrollTop = (fy === undefined ? 0 : fy * h) - (fy === undefined ? 0 : lbArea.clientHeight / 2);
+  }
+  function mostrarPrint() {
+    var img = galeria[atual];
+    setAmpliado(false);
+    lbImg.src = img.src; lbImg.alt = img.alt;
+    lbLeg.replaceChildren(document.createTextNode(img.alt), el("span", { class: "lb-dica" }));
+    setAmpliado(false);
+    var varios = galeria.length > 1;
+    lbCont.textContent = varios ? "Print " + (atual + 1) + " de " + galeria.length : "";
+    lbAnt.hidden = lbProx.hidden = !varios;
+    lbAnt.disabled = atual === 0;
+    lbProx.disabled = atual === galeria.length - 1;
+  }
+  function abrirLb(botao) {
+    var grupo = botao.closest(".prints");
+    galeria = $$("[data-zoom] img", grupo);
+    atual = Math.max(0, galeria.indexOf($("img", botao)));
+    ultimo = botao;
+    mostrarPrint();
+    lb.hidden = false;
     document.body.style.overflow = "hidden";
     lbFechar.focus();
   }
   function fecharLb() {
     lb.hidden = true;
+    setAmpliado(false);
     document.body.style.overflow = "";
     if (ultimo) ultimo.focus();
   }
+  function passar(d) {
+    var n = atual + d;
+    if (n < 0 || n >= galeria.length) return;
+    atual = n;
+    mostrarPrint();
+  }
   document.addEventListener("click", function (e) {
     var b = e.target.closest("[data-zoom]");
-    if (b) abrirLb($("img", b), b);
+    if (b) abrirLb(b);
   });
   lbFechar.addEventListener("click", fecharLb);
-  lb.addEventListener("click", function (e) { if (e.target === lb || e.target.classList.contains("lb-img")) fecharLb(); });
+  lbAnt.addEventListener("click", function () { passar(-1); });
+  lbProx.addEventListener("click", function () { passar(1); });
+  lbZoom.addEventListener("click", function () { setAmpliado(!ampliado, 0.5, 0.5); });
+  lbImg.addEventListener("click", function (e) {
+    if (arrasto && arrasto.moveu) return;
+    if (ampliado) return setAmpliado(false);
+    var r = lbImg.getBoundingClientRect();
+    setAmpliado(true, (e.clientX - r.left) / r.width, (e.clientY - r.top) / r.height);
+  });
+  // fundo vazio fecha (só com a imagem inteira; ampliada, o fundo é área de arrastar)
+  lb.addEventListener("click", function (e) { if (!ampliado && (e.target === lb || e.target === lbArea)) fecharLb(); });
+  // arrastar com o mouse quando ampliado (no toque, a própria rolagem já move)
+  lbArea.addEventListener("pointerdown", function (e) {
+    if (!ampliado || e.pointerType !== "mouse") return;
+    arrasto = { x: e.clientX, y: e.clientY, l: lbArea.scrollLeft, t: lbArea.scrollTop, moveu: false };
+    lbArea.classList.add("arrastando");
+    e.preventDefault();
+  });
+  addEventListener("pointermove", function (e) {
+    if (!arrasto) return;
+    var dx = e.clientX - arrasto.x, dy = e.clientY - arrasto.y;
+    if (Math.abs(dx) + Math.abs(dy) > 4) arrasto.moveu = true;
+    lbArea.scrollLeft = arrasto.l - dx;
+    lbArea.scrollTop = arrasto.t - dy;
+  });
+  addEventListener("pointerup", function () {
+    if (!arrasto) return;
+    lbArea.classList.remove("arrastando");
+    var a = arrasto;
+    setTimeout(function () { if (arrasto === a) arrasto = null; }, 0);
+  });
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") { if (!lb.hidden) fecharLb(); else fecharMenu(); }
-    if (e.key === "Tab" && !lb.hidden) { e.preventDefault(); lbFechar.focus(); }
+    if (lb.hidden) { if (e.key === "Escape") fecharMenu(); return; }
+    if (e.key === "Escape") fecharLb();
+    else if (e.key === "ArrowLeft" && !ampliado) passar(-1);
+    else if (e.key === "ArrowRight" && !ampliado) passar(1);
+    else if (e.key === "+" || e.key === "=") setAmpliado(true, 0.5, 0.5);
+    else if (e.key === "-") setAmpliado(false);
+    else if (e.key === "Tab") {
+      // mantém o foco dentro do visualizador
+      var focaveis = $$("button:not([hidden]):not([disabled])", lb);
+      var i = focaveis.indexOf(document.activeElement);
+      e.preventDefault();
+      focaveis[(i + (e.shiftKey ? -1 : 1) + focaveis.length) % focaveis.length].focus();
+    }
   });
 
   // ---------- copiar links dos sistemas ----------
@@ -385,25 +490,28 @@
   });
 
   // ---------- contato ----------
-  (function () {
-    var dl = $("#contato-dados");
+  // A versão "mini" (dentro de um passo) não leva o botão grande de WhatsApp.
+  $$("[data-contato]").forEach(function (dl) {
+    var c = CONTATOS[dl.dataset.contato];
+    if (!c) return;
+    var mini = dl.classList.contains("contato-mini");
     var algum = false;
-    var wa = CONTATO.whatsapp ? "https://wa.me/55" + CONTATO.whatsapp.replace(/\D/g, "") : "";
+    var wa = c.whatsapp ? "https://wa.me/55" + c.whatsapp.replace(/\D/g, "") : "";
     function campo(rotulo, filhos) {
       algum = true;
       dl.appendChild(el("div", {}, [el("dt", { texto: rotulo })].concat(filhos)));
     }
-    if (CONTATO.endereco) campo("Endereço", [el("dd", { texto: CONTATO.endereco })]);
-    if (CONTATO.horario) campo("Horário", [el("dd", { texto: CONTATO.horario })]);
-    if (CONTATO.telefone) campo("Telefone", [el("dd", {}, [el("a", { href: "tel:+55" + CONTATO.telefone.replace(/\D/g, ""), texto: CONTATO.telefone })])]);
-    if (wa) campo("WhatsApp", [el("dd", {}, [el("a", { href: wa, target: "_blank", rel: "noopener", texto: CONTATO.whatsapp })])]);
-    var emails = (CONTATO.emails || []).filter(Boolean);
+    if (wa) campo("WhatsApp", [el("dd", {}, [el("a", { href: wa, target: "_blank", rel: "noopener", texto: c.whatsapp })])]);
+    if (c.telefone) campo("Telefone", [el("dd", {}, [el("a", { href: "tel:+55" + c.telefone.replace(/\D/g, ""), texto: c.telefone })])]);
+    var emails = (c.emails || []).filter(Boolean);
     if (emails.length) campo(emails.length > 1 ? "E-mails" : "E-mail", emails.map(function (m) {
       return el("dd", {}, [el("a", { href: "mailto:" + m, texto: m })]);
     }));
-    if (wa) dl.appendChild(el("div", {}, [el("a", { class: "btn", href: wa, target: "_blank", rel: "noopener", texto: "Chamar no WhatsApp" })]));
-    if (!algum) dl.appendChild(el("div", {}, [el("dd", { texto: "Procure a Sala Mineira do Empreendedor na Prefeitura de Lavras." })]));
-  })();
+    if (c.horario) campo("Horário", [el("dd", { texto: c.horario })]);
+    if (c.endereco) campo("Endereço", [el("dd", { texto: c.endereco })]);
+    if (wa && !mini) dl.appendChild(el("div", {}, [el("a", { class: "btn", href: wa, target: "_blank", rel: "noopener", texto: "Chamar no WhatsApp" })]));
+    if (!algum && c.vazio) dl.appendChild(el("div", {}, [el("dd", { texto: c.vazio })]));
+  });
 
   // ---------- menu: marca a seção visível ----------
   if ("IntersectionObserver" in window) {
@@ -424,7 +532,7 @@
   // ---------- estado inicial ----------
   var h = location.hash.slice(1);
   if (h && document.getElementById(h)) {
-    requestAnimationFrame(function () { irPara(h, "auto"); });
+    setTimeout(function () { irPara(h, "auto"); }, 0);
   } else {
     var salva = store.get("aba");
     if (salva && idsAbas.indexOf(salva) > -1) mostrar(salva);
