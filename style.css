@@ -494,8 +494,9 @@ details.extra ol, details.extra ul { margin: 0; padding-left: 22px; display: gri
 .contato-dados { display: grid; gap: 12px; margin: 24px 0 0; }
 .contato-dados div { display: grid; gap: 2px; }
 .contato-dados dt { font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fraco); }
-.contato-dados dd { margin: 0; font-size: 1.1em; font-weight: 500; }
-.contato-dados .btn { margin-top: 8px; }
+.contato-dados dd { margin: 0; font-size: 1.1em; font-weight: 500; overflow-wrap: anywhere; }
+.contato-dados .btn { margin-top: 8px; justify-self: start; }
+@media (max-width: 420px) { .contato-dados dd { font-size: 1em; } }
 .sistemas { background: var(--sup); border: 1px solid var(--linha); border-radius: var(--raio); padding: 24px; }
 @media (min-width: 700px) { .sistemas { padding: 32px; } }
 .sistemas-tit { font-size: 12px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amarelo); }

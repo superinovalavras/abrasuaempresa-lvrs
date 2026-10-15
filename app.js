@@ -5,13 +5,14 @@
     Contato da Sala Mineira do Empreendedor de Lavras.
     Preencha aqui: campo vazio não aparece no site. Enquanto tudo estiver vazio,
     o site mostra só a orientação de procurar a Sala Mineira na Prefeitura.
+    Dados passados pela Superintendência em 15/10/2026.
   */
   var CONTATO = {
-    endereco: "",  // ex.: "Rua Exemplo, 100, Centro"
-    horario: "",   // ex.: "Segunda a sexta, das 8h às 17h"
+    endereco: "",  // ainda não informado; ex.: "Rua Exemplo, 100, Centro"
+    horario: "Segunda a sexta, das 12h às 18h",
     telefone: "",  // ex.: "(35) 3000-0000"
-    whatsapp: "",  // só números com DDD, ex.: "35900000000"
-    email: ""
+    whatsapp: "(35) 3694-4067",  // com DDD; o link do botão usa só os números
+    emails: ["saladoempreendedor@lavras.mg.gov.br", "minasfacilalvara@lavras.mg.gov.br"]
   };
 
   // O que cada situação do Portal de Serviços e do SINAL quer dizer, e o que fazer.
@@ -386,21 +387,21 @@
   // ---------- contato ----------
   (function () {
     var dl = $("#contato-dados");
-    var campos = [["endereco", "Endereço"], ["horario", "Horário"], ["telefone", "Telefone"], ["email", "E-mail"]];
     var algum = false;
-    campos.forEach(function (c) {
-      var v = CONTATO[c[0]];
-      if (!v) return;
+    var wa = CONTATO.whatsapp ? "https://wa.me/55" + CONTATO.whatsapp.replace(/\D/g, "") : "";
+    function campo(rotulo, filhos) {
       algum = true;
-      var dd = c[0] === "email" ? el("dd", {}, [el("a", { href: "mailto:" + v, texto: v })])
-        : c[0] === "telefone" ? el("dd", {}, [el("a", { href: "tel:+55" + v.replace(/\D/g, ""), texto: v })])
-        : el("dd", { texto: v });
-      dl.appendChild(el("div", {}, [el("dt", { texto: c[1] }), dd]));
-    });
-    if (CONTATO.whatsapp) {
-      algum = true;
-      dl.appendChild(el("div", {}, [el("a", { class: "btn", href: "https://wa.me/55" + CONTATO.whatsapp.replace(/\D/g, ""), target: "_blank", rel: "noopener", texto: "Chamar no WhatsApp" })]));
+      dl.appendChild(el("div", {}, [el("dt", { texto: rotulo })].concat(filhos)));
     }
+    if (CONTATO.endereco) campo("Endereço", [el("dd", { texto: CONTATO.endereco })]);
+    if (CONTATO.horario) campo("Horário", [el("dd", { texto: CONTATO.horario })]);
+    if (CONTATO.telefone) campo("Telefone", [el("dd", {}, [el("a", { href: "tel:+55" + CONTATO.telefone.replace(/\D/g, ""), texto: CONTATO.telefone })])]);
+    if (wa) campo("WhatsApp", [el("dd", {}, [el("a", { href: wa, target: "_blank", rel: "noopener", texto: CONTATO.whatsapp })])]);
+    var emails = (CONTATO.emails || []).filter(Boolean);
+    if (emails.length) campo(emails.length > 1 ? "E-mails" : "E-mail", emails.map(function (m) {
+      return el("dd", {}, [el("a", { href: "mailto:" + m, texto: m })]);
+    }));
+    if (wa) dl.appendChild(el("div", {}, [el("a", { class: "btn", href: wa, target: "_blank", rel: "noopener", texto: "Chamar no WhatsApp" })]));
     if (!algum) dl.appendChild(el("div", {}, [el("dd", { texto: "Procure a Sala Mineira do Empreendedor na Prefeitura de Lavras." })]));
   })();
 
