@@ -375,6 +375,21 @@ ol.passos li.feito .corpo strong { text-decoration: line-through; text-decoratio
 .nota.alerta h4 { color: var(--amarelo); }
 .quem { font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--amarelo); }
 
+/* Botões que levam ao sistema certo (Jucemg, SINAL, gov.br...): sempre perto da instrução */
+.ir { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.ir .btn, .ir .btn-sec { min-height: 44px; padding: 10px 16px; font-size: 15px; }
+.destaque-acao .ir { margin-top: 0; }
+@media (min-width: 760px) { .destaque-acao .ir { flex-direction: column; align-items: stretch; } }
+/* Chamada com botão para o sistema certo (ex.: viabilidade na Jucemg) */
+.destaque-acao {
+  display: grid; gap: 16px; align-items: center; padding: 20px; border-radius: var(--raio-m);
+  background: var(--amarelo-vidro); border: 2px solid var(--amarelo);
+}
+@media (min-width: 760px) { .destaque-acao { grid-template-columns: minmax(0, 1fr) auto; padding: 24px 28px; gap: 24px; } }
+.destaque-acao h4 { font-size: 21px; font-weight: 600; margin-top: 4px; }
+.destaque-acao p:not(.quem) { color: var(--suave); margin-top: 6px; }
+.destaque-acao b { color: var(--branco); font-weight: 600; }
+.destaque-acao .btn { justify-self: start; }
 .proxima { justify-self: start; }
 
 details.extra { background: var(--sup); border: 1px solid var(--linha); border-radius: var(--raio-m); }
@@ -636,6 +651,9 @@ ol.passos .prints { margin-left: -54px; }
   ol.passos > li { break-inside: avoid; padding: 6pt 8pt; }
   ol.passos input { border-color: #000; }
   .tag, .docs span { background: #eee; color: #000; }
+  .destaque-acao .btn { display: none; }
+  .ir { display: none !important; }
+  .destaque-acao { border-color: #000; }
   .bloco { padding-top: 12pt; }
   #mei { display: none; }
   /* quem escolheu a rota do MEI imprime a trilha do MEI no lugar das 4 etapas */

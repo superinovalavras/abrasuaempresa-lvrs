@@ -25,6 +25,16 @@
     }
   };
 
+  // Para onde o botão de cada situação leva: a pessoa sempre sai com o caminho do sistema certo.
+  var DESTINOS = {
+    jucemg: ["https://jucemg.mg.gov.br/servicos", "Abrir o Portal da Jucemg"],
+    sinal: ["https://jucemg.mg.sinal.quasar.srv.br/", "Entrar no SINAL"]
+  };
+  var SIT_DESTINO = {
+    "exigencia": "jucemg", "pend-usuario": "sinal", "pend-doc": "sinal", "pendente": "sinal",
+    "aguardando-lib": "sinal", "aguardando-ant": "sinal", "deferido": "sinal", "finalizado": "sinal"
+  };
+
   // O que cada situação do Portal de Serviços e do SINAL quer dizer, e o que fazer.
   var SITUACOES = [
     { id: "exigencia", nome: "Em exigência", onde: "Portal de Serviços",
@@ -311,6 +321,8 @@
       el("p", { class: "faca", texto: "O que fazer" }),
       el("ol", {}, s.faca.map(function (f) { return el("li", { texto: f }); }))
     ];
+    var d = DESTINOS[SIT_DESTINO[s.id]];
+    if (d) filhos.push(el("div", { class: "ir" }, [el("a", { class: "btn", href: d[0], target: "_blank", rel: "noopener", texto: d[1] + " ↗" })]));
     if (s.link) filhos.push(el("p", {}, [el("a", { href: "#" + s.link[0], texto: s.link[1] + " →" })]));
     sitSaida.replaceChildren.apply(sitSaida, filhos);
     sitSaida.hidden = false;
@@ -344,7 +356,7 @@
       "@type": "FAQPage",
       mainEntity: itens.map(function (d) {
         var resp = $(":scope > div", d).cloneNode(true);
-        $$(".linkar", resp).forEach(function (n) { n.remove(); });
+        $$(".linkar, .ir", resp).forEach(function (n) { n.remove(); });
         return {
           "@type": "Question",
           name: $("summary", d).lastChild.textContent.trim(),
