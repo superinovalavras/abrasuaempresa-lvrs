@@ -299,8 +299,11 @@ dialog.modal::backdrop { background: rgba(1, 41, 40, 0.8); }
 
 /* ---------- Impressão: o resultado em papel, para anexar ao processo ---------- */
 .so-impressao { display: none; }
+/* Margem zero tira o cabeçalho e o rodapé do navegador (endereço do site, título, data):
+   o PDF vai para o contribuinte e a página é de uso interno. A margem volta no body. */
+@page { margin: 0; }
 @media print {
-  body { background: #fff; color: #000; }
+  body { background: #fff; color: #000; padding: 14mm 16mm; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
   .topo, .cabeca, .painel, .dica-linha, .acoes-res, .rodape, dialog, .arcos { display: none !important; }
   .so-impressao { display: block; margin-bottom: 16px; font-size: 13px; color: #000; }
   .resultado { margin-top: 0; }
