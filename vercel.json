@@ -1,5 +1,13 @@
 {
+  "redirects": [
+    { "source": "/viabilidade", "destination": "/salamineira", "permanent": true },
+    { "source": "/viabilidade/(.*)", "destination": "/salamineira", "permanent": true }
+  ],
   "headers": [
+    {
+      "source": "/salamineira(.*)",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+    },
     {
       "source": "/viabilidade(.*)",
       "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
