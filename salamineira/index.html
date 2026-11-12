@@ -295,7 +295,14 @@ dialog.modal::backdrop { background: rgba(1, 41, 40, 0.8); }
 .cabeca--aba { padding-top: 24px; }
 
 /* ---------- Cadastro imobiliário → CEP ---------- */
-.painel--um { grid-template-columns: minmax(0, 560px); }
+.painel--dois { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+#cep-cad { font-size: 22px; font-weight: 500; letter-spacing: 0.04em; font-variant-numeric: tabular-nums; }
+#cep-cad::placeholder { font-weight: 400; letter-spacing: 0; font-size: 18px; }
+.bloco-cab .acoes-res { margin-left: auto; }
+.cadgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: 6px; padding: 18px 24px 22px; max-height: 420px; overflow-y: auto; }
+.cadgrid span { padding: 6px 10px; border-radius: 8px; background: var(--sup-2); border: 1px solid var(--linha); font-size: 15px; font-weight: 500; text-align: center; font-variant-numeric: tabular-nums; }
+.cep-cab { display: grid; gap: 6px; }
+.cep-cab .cadr-cep { font-size: 32px; }
 #cad { font-size: 22px; font-weight: 500; letter-spacing: 0.02em; font-variant-numeric: tabular-nums; }
 #cad::placeholder { font-weight: 400; letter-spacing: 0; font-size: 18px; }
 .cadr { display: grid; grid-template-columns: minmax(130px, auto) minmax(0, 1fr) auto; gap: 8px 24px; align-items: center; padding: 18px 24px; }
@@ -323,6 +330,8 @@ dialog.modal::backdrop { background: rgba(1, 41, 40, 0.8); }
   .aba small { display: none; }
   .cadr { grid-template-columns: minmax(0, 1fr); padding: 16px 20px; }
   .cadr-acoes { justify-content: flex-start; }
+  .bloco-cab .acoes-res { margin-left: 0; width: 100%; }
+  .cadgrid { padding: 16px 20px; }
   .logos img { height: 56px; }
 }
 
@@ -337,7 +346,7 @@ dialog.modal::backdrop { background: rgba(1, 41, 40, 0.8); }
 @page { margin: 0; }
 @media print {
   body { background: #fff; color: #000; padding: 14mm 16mm; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
-  .topo, .abas, .cabeca, .painel, .dica-linha, .acoes-res, .rodape, dialog, .arcos, .cadr-acoes { display: none !important; }
+  .topo, .abas, .cabeca, .painel, .dica-linha, .acoes-res, .rodape, dialog, .arcos, .cadr-acoes, .acoes-cep { display: none !important; }
   .so-impressao { display: block; margin-bottom: 16px; font-size: 13px; color: #000; }
   .resultado { margin-top: 0; }
   .veredito, .pz { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -384,7 +393,7 @@ dialog.modal::backdrop { background: rgba(1, 41, 40, 0.8); }
       <svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg><span>Zoneamento<small>CEP × atividade</small></span>
     </button>
     <button class="aba" role="tab" id="t-cadastro" aria-controls="aba-cadastro" aria-selected="false" data-aba="cadastro" type="button" tabindex="-1">
-      <svg class="icon" aria-hidden="true"><use href="#i-casa"/></svg><span>CEP do imóvel<small>pelo cadastro imobiliário</small></span>
+      <svg class="icon" aria-hidden="true"><use href="#i-casa"/></svg><span>Cadastro × CEP<small>imóvel pelo cadastro ou pelo CEP</small></span>
     </button>
   </div>
 
@@ -427,11 +436,11 @@ dialog.modal::backdrop { background: rgba(1, 41, 40, 0.8); }
 
   <div id="aba-cadastro" role="tabpanel" aria-labelledby="t-cadastro" hidden>
     <section class="cabeca cabeca--aba" aria-labelledby="titulo-cad">
-      <p class="eyebrow"><svg class="i-mais" aria-hidden="true"><use href="#mais"/></svg>Sala Mineira do Empreendedor · Cadastro imobiliário</p>
-      <h1 id="titulo-cad">Qual é o CEP deste <span class="enfase">imóvel?</span></h1>
+      <p class="eyebrow"><svg class="i-mais" aria-hidden="true"><use href="#mais"/></svg>Sala Mineira do Empreendedor · Cadastro imobiliário × CEP</p>
+      <h1 id="titulo-cad">Ache o imóvel pelo cadastro <span class="enfase">ou pelo CEP</span></h1>
     </section>
 
-    <section class="painel painel--um" aria-label="Busca por cadastro">
+    <section class="painel painel--dois" aria-label="Busca por cadastro ou CEP">
       <div class="campo">
         <label class="rotulo" for="cad">Número do cadastro imobiliário</label>
         <div class="caixa" id="caixa-cad">
@@ -441,8 +450,18 @@ dialog.modal::backdrop { background: rgba(1, 41, 40, 0.8); }
         </div>
         <p class="info" id="cad-info" aria-live="polite"></p>
       </div>
+
+      <div class="campo">
+        <label class="rotulo" for="cep-cad">CEP</label>
+        <div class="caixa" id="caixa-cep-cad">
+          <svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>
+          <input id="cep-cad" type="text" inputmode="numeric" placeholder="00000-000" autocomplete="off" spellcheck="false" aria-describedby="cep-cad-info">
+          <button class="limpar-campo" id="limpar-cep-cad" type="button" aria-label="Apagar o CEP" hidden><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+        </div>
+        <p class="info" id="cep-cad-info" aria-live="polite"></p>
+      </div>
     </section>
-    <p class="dica-linha">Dá para colar vários cadastros de uma vez, separados por espaço, vírgula ou linha. O CEP achado já mostra a zona e leva direto para a consulta de zoneamento.</p>
+    <p class="dica-linha">Pelo cadastro, a busca devolve o CEP; dá para colar vários cadastros de uma vez. Pelo CEP, devolve todos os cadastros daquele CEP. Os dois mostram a zona e levam direto para a consulta de zoneamento.</p>
 
     <section class="resultado" id="resultado-cad" aria-live="polite" aria-label="Resultado da busca por cadastro"></section>
   </div>
@@ -548,6 +567,7 @@ function indexar() {
   for (const z of DADOS.manuais) MANUAIS.add(z);
   for (const [cep, rua, zonas] of DADOS.ceps) CEPS.set(cep, { cep, rua, zonas });
   for (const [cod, desc, zonas] of DADOS.cnaes) CNAES.set(cod, { cod, desc, zonas, palavras: palavras(desc) });
+  CEP_CADS = null;
   atualizarMeta();
 }
 function atualizarMeta() {
@@ -582,6 +602,20 @@ function codificarCadastros(m, versao) {
   const cod = i => { let o = ''; for (let k = w - 1; k >= 0; k--) o += ALFABETO[Math.floor(i / 64 ** k) % 64]; return o; };
   for (let n = 1; n <= maior; n++) partes.push(m.has(n) ? cod(pos.get(m.get(n))) : '~'.repeat(w));
   return { versao, total: m.size, largura: w, ceps: lista, mapa: partes.join('') };
+}
+let CEP_CADS = null;           // '37200194' -> [cadastros], montado na primeira busca por CEP
+function cadastrosDoCep(cep) {
+  if (!CEP_CADS) {
+    CEP_CADS = new Map();
+    const w = DADOS.cadastros.largura, fim = DADOS.cadastros.mapa.length / w;
+    for (let n = 1; n <= fim; n++) {
+      const c = cepDoCadastro(n);
+      if (!c) continue;
+      if (!CEP_CADS.has(c)) CEP_CADS.set(c, []);
+      CEP_CADS.get(c).push(n);
+    }
+  }
+  return CEP_CADS.get(cep) || [];
 }
 const maiorCadastro = () => Math.floor(DADOS.cadastros.mapa.length / DADOS.cadastros.largura);
 indexar();
@@ -1096,10 +1130,36 @@ document.querySelectorAll('[role="tab"]').forEach(t => {
 });
 
 /* ===== 3. Cadastro imobiliário → CEP ===== */
-const cadInput = $('cad');
-let cadItens = [], cadErro = '';
+const cadInput = $('cad'), cepCadInput = $('cep-cad');
+let cadItens = [], cadErro = '', modoCad = 'cad', cepBusca = null, cepBuscaErro = '';
+
+// Busca pelo CEP: lista os cadastros dele. Usar um campo apaga o outro.
+function lerCepCadastro(final) {
+  modoCad = 'cep'; cadItens = []; cadErro = ''; cepBusca = null; cepBuscaErro = '';
+  const q = cepCadInput.value.trim(), dig = soDigitos(q);
+  if (!q) modoCad = 'cad';
+  else if (/[a-zA-ZÀ-ÿ]/.test(q)) cepBuscaErro = 'Digite só o CEP, com ou sem ponto e traço.';
+  else if (dig.length > 8) cepBuscaErro = 'Esse número tem mais de 8 dígitos. Confira o CEP.';
+  else if (dig.length === 8) cepBusca = dig;
+  else if (final) cepBuscaErro = `O CEP tem 8 números. ${8 - dig.length === 1 ? 'Falta 1' : `Faltam ${8 - dig.length}`}.`;
+  desenharCadastro();
+}
+function mascarar(input) {
+  const v = input.value;
+  if (/[a-zA-ZÀ-ÿ]/.test(v)) return;
+  const d = soDigitos(v);
+  if (d.length > 8) return;
+  const pos = input.selectionStart == null ? v.length : input.selectionStart;
+  const antes = soDigitos(v.slice(0, pos)).length;
+  const f = d.length > 5 ? d.slice(0, 5) + '-' + d.slice(5) : d;
+  if (f === v) return;
+  input.value = f;
+  const novo = antes > 5 ? antes + 1 : antes;
+  try { input.setSelectionRange(novo, novo); } catch (_) {}
+}
 
 function lerCadastros() {
+  modoCad = 'cad'; cepBusca = null; cepBuscaErro = '';
   const q = cadInput.value.trim();
   cadItens = []; cadErro = '';
   if (/[a-zA-ZÀ-ÿ]/.test(q)) cadErro = 'Digite só o número do cadastro, sem letras.';
@@ -1142,7 +1202,43 @@ function linhaCadastro(it) {
   </div>`;
 }
 
+function desenharBuscaCep() {
+  const info = $('cep-cad-info'), box = $('resultado-cad');
+  const cads = cepBusca ? cadastrosDoCep(cepBusca) : [];
+  const temZona = cepBusca && CEPS.has(cepBusca);
+  if (cepBuscaErro) info.innerHTML = erroHtml(esc(cepBuscaErro));
+  else if (cepBusca && cads.length) info.innerHTML = `${icone('i-ok', 'icon ok')}<span>${plural(cads.length, '1 cadastro', `${numero(cads.length)} cadastros`)}</span>`;
+  else if (cepBusca) info.innerHTML = erroHtml(`Nenhum cadastro com o CEP ${fmtCep(cepBusca)}.`);
+  else info.innerHTML = '';
+  $('caixa-cep-cad').dataset.erro = String(!!cepBuscaErro || (!!cepBusca && !cads.length));
+  cepCadInput.setAttribute('aria-invalid', String(!!cepBuscaErro));
+  if (!cepBusca) {
+    box.innerHTML = `<div class="vazio">${arcos()}
+      <p class="vazio-tit">Os cadastros aparecem aqui</p>
+      <p>Termine de digitar o CEP: são 8 números.</p>
+    </div>`;
+    return;
+  }
+  const acoes = `<div class="acoes-res acoes-cep">
+      ${cads.length ? `<button class="btn btn-p" type="button" id="copiar-cads">${icone('i-copiar')}<span>Copiar cadastros</span></button>` : ''}
+      <button class="btn-sec btn-p" type="button" data-zonear="${cepBusca}">${icone('i-pin')}Ver zoneamento</button>
+    </div>`;
+  box.innerHTML = `<div class="bloco">
+      <div class="bloco-cab">
+        <div class="cep-cab"><p class="bloco-tit">CEP</p><p class="cadr-cep">${fmtCep(cepBusca)}</p><p class="cadr-onde">${ondeDoCep(cepBusca)}</p></div>
+        ${acoes}
+      </div>
+      ${cads.length
+        ? `<p class="bloco-msg">${plural(cads.length, '1 cadastro imobiliário', `${numero(cads.length)} cadastros imobiliários`)} com este CEP${temZona ? '' : '. O CEP não está na tabela de zoneamento'}:</p>
+           <div class="cadgrid">${cads.map(n => `<span>${n}</span>`).join('')}</div>`
+        : `<p class="bloco-msg">Nenhum cadastro imobiliário tem este CEP na lista de ${DADOS.cadastros.versao}. Confira os números${cepBusca.startsWith('3720') ? '' : ': os CEPs de Lavras vão de 37200-000 a 37209-999'}.</p>`}
+    </div>`;
+}
+
 function desenharCadastro() {
+  $('limpar-cep-cad').hidden = !cepCadInput.value;
+  if (modoCad === 'cep') { $('cad-info').innerHTML = ''; $('caixa-cad').dataset.erro = 'false'; $('limpar-cad').hidden = true; return desenharBuscaCep(); }
+  $('cep-cad-info').innerHTML = ''; $('caixa-cep-cad').dataset.erro = 'false';
   const info = $('cad-info'), box = $('resultado-cad');
   const achados = cadItens.filter(i => i.cep), faltam = cadItens.length - achados.length;
   if (cadErro) info.innerHTML = erroHtml(esc(cadErro));
@@ -1158,8 +1254,8 @@ function desenharCadastro() {
 
   if (!cadItens.length) {
     box.innerHTML = `<div class="vazio">${arcos()}
-      <p class="vazio-tit">O CEP aparece aqui</p>
-      <p>Digite o número do cadastro imobiliário do imóvel. São ${numero(DADOS.cadastros.total)} cadastros, de ${DADOS.cadastros.versao}.</p>
+      <p class="vazio-tit">O resultado aparece aqui</p>
+      <p>Digite o número do cadastro imobiliário para ver o CEP, ou o CEP para ver os cadastros. São ${numero(DADOS.cadastros.total)} cadastros, de ${DADOS.cadastros.versao}.</p>
     </div>`;
     return;
   }
@@ -1191,6 +1287,8 @@ $('resultado-cad').addEventListener('click', e => {
   if (b.dataset.copiarCep) copiarNoBotao(b, fmtCep(b.dataset.copiarCep));
   else if (b.id === 'copiar-lista') {
     copiarNoBotao(b, cadItens.map(i => `${i.n}\t${i.cep ? fmtCep(i.cep) : 'não encontrado'}`).join('\n'));
+  } else if (b.id === 'copiar-cads') {
+    copiarNoBotao(b, cadastrosDoCep(cepBusca).join('\n'));
   } else if (b.dataset.zonear) {
     irPara('zona', false);
     cepInput.value = fmtCep(b.dataset.zonear);
@@ -1198,7 +1296,11 @@ $('resultado-cad').addEventListener('click', e => {
     (estado.end ? cnaeInput : cepInput).focus();
   }
 });
-cadInput.addEventListener('input', lerCadastros);
+cadInput.addEventListener('input', () => { if (cepCadInput.value) cepCadInput.value = ''; lerCadastros(); });
+cepCadInput.addEventListener('input', () => { if (cadInput.value) cadInput.value = ''; mascarar(cepCadInput); lerCepCadastro(false); });
+cepCadInput.addEventListener('change', () => lerCepCadastro(true));
+cepCadInput.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); lerCepCadastro(true); } });
+$('limpar-cep-cad').addEventListener('click', () => { cepCadInput.value = ''; lerCepCadastro(false); cepCadInput.focus(); });
 // Coluna colada do Excel: o campo de uma linha só apagaria as quebras e juntaria os números
 cadInput.addEventListener('paste', e => {
   const t = e.clipboardData && e.clipboardData.getData('text');
@@ -1207,6 +1309,7 @@ cadInput.addEventListener('paste', e => {
   const limpo = t.trim().split(/[\r\n\t]+/).map(x => x.trim()).filter(Boolean).join(', ');
   const ini = cadInput.selectionStart ?? cadInput.value.length, fim = cadInput.selectionEnd ?? ini;
   const antes = cadInput.value.slice(0, ini), depois = cadInput.value.slice(fim);
+  cepCadInput.value = '';
   cadInput.value = antes + (antes.trim() && !/[\s,;]$/.test(antes) ? ', ' : '') + limpo + (depois.trim() && !/^[\s,;]/.test(depois) ? ', ' : '') + depois;
   lerCadastros();
 });
@@ -1693,7 +1796,7 @@ function aplicarDados(novo) {
   indexar();
   estado.ativs = estado.ativs.filter(c => CNAES.has(c));
   lerCep(false);                      // reavalia o CEP digitado com a tabela nova e redesenha
-  lerCadastros();
+  if (modoCad === 'cep') lerCepCadastro(false); else lerCadastros();
   baixarPagina();
   pendente = null;
   relBox.innerHTML = `
