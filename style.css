@@ -1,27 +1,27 @@
 /*
-  Abra sua empresa · identidade LVRS+ (Pacto Lavras pela Inovação).
-  Fonte da verdade das cores: ../../marca/README.md. Não inventar cores fora desta lista:
-  amarelo é o destaque; verde é superfície chapada; vermelho/azul/agro são verticais e
-  não entram aqui. Arcos só sobre cor chapada, grossos e opacos.
+  Abra sua empresa · identidade da Prefeitura de Lavras (a mesma do carrossel v6 e do reel
+  de abertura, em ../carrossel-abertura/carrossel.html): azul #003366 e amarelo #FFD700,
+  Poppins, ênfase em Poppins 700 amarela e enfeites alegres sempre fora do texto.
+  Não inventar cores fora desta lista.
 */
 :root {
-  --fundo: #012928;
-  --chrome: #001b1a;
-  --verde: #0d8049;
-  --amarelo: #ffcd00;
+  --fundo: #003366;
+  --chrome: #002447;
+  --azul: #0b4078;          /* superfície chapada (antes o verde LVRS+) */
+  --azul-claro: #cce0ff;
+  --amarelo: #FFD700;
   --branco: #ffffff;
 
-  --sup: #06322f;           /* cartão sobre o fundo */
-  --sup-2: #0a3c39;         /* cartão em hover / selecionado */
+  --sup: #0b4078;           /* cartão sobre o fundo */
+  --sup-2: #134b88;         /* cartão em hover / selecionado */
   --linha: rgba(255, 255, 255, 0.12);
   --linha-forte: rgba(255, 255, 255, 0.24);
   --suave: rgba(255, 255, 255, 0.76);
   --fraco: rgba(255, 255, 255, 0.6);
-  --verde-vidro: rgba(13, 128, 73, 0.22);
-  --amarelo-vidro: rgba(255, 205, 0, 0.09);
+  --azul-vidro: rgba(204, 224, 255, 0.12);
+  --amarelo-vidro: rgba(255, 215, 0, 0.1);
 
   --sans: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --script: "Kaushan Script", "Brush Script MT", cursive;
 
   --h-topo: 64px;
   --raio: 24px;
@@ -77,25 +77,8 @@ h1, h2, h3, h4 { margin: 0; font-weight: 500; line-height: 1.15; text-wrap: bala
 }
 .i-mais { width: 14px; height: 14px; flex: none; }
 
-/* Palavra de ênfase: brush itálico amarelo no meio da frase, como no manual da marca. */
-.enfase {
-  font-family: var(--script);
-  font-weight: 400;
-  font-size: 1.08em;
-  padding: 0 0.06em;
-  color: var(--amarelo);
-}
-@supports (-webkit-background-clip: text) or (background-clip: text) {
-  .enfase {
-    background-image: linear-gradient(100deg, var(--amarelo) 0%, var(--amarelo) 40%, #fff3b0 50%, var(--amarelo) 60%, var(--amarelo) 100%);
-    background-size: 300% 100%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: brilho 6s ease-in-out infinite;
-  }
-}
-@keyframes brilho { 0% { background-position: 100% 0; } 60%, 100% { background-position: -50% 0; } }
+/* Palavra de ênfase: Poppins 700 amarela no meio da frase, como no carrossel da Prefeitura. */
+.enfase { font-weight: 700; color: var(--amarelo); }
 
 h1 { font-size: clamp(40px, 8vw, 68px); letter-spacing: -0.02em; }
 h2 { font-size: clamp(30px, 5vw, 44px); letter-spacing: -0.015em; margin-top: 12px; }
@@ -140,7 +123,7 @@ h2 { font-size: clamp(30px, 5vw, 44px); letter-spacing: -0.015em; margin-top: 12
 .topo.rolou { border-color: var(--linha); }
 .topo-in { display: flex; align-items: center; gap: 16px; height: var(--h-topo); }
 .marca { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--branco); flex: none; }
-.marca img { height: 32px; width: auto; }
+.marca img { height: 40px; width: auto; }
 .marca span {
   border-left: 1px solid var(--linha-forte); padding-left: 12px;
   font-size: 11px; font-weight: 500; line-height: 1.3; letter-spacing: 0.2em; text-transform: uppercase; color: var(--suave);
@@ -200,7 +183,7 @@ h2 { font-size: clamp(30px, 5vw, 44px); letter-spacing: -0.015em; margin-top: 12
 
 .hero-card {
   position: relative; isolation: isolate; overflow: hidden;
-  background: var(--verde); border-radius: 32px; padding: 32px 24px 24px;
+  background: var(--azul); border-radius: 32px; padding: 32px 24px 24px;
 }
 @media (min-width: 700px) { .hero-card { padding: 40px 32px 32px; } }
 .hero-card-tit { font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 500; margin-bottom: 32px; }
@@ -208,9 +191,9 @@ h2 { font-size: clamp(30px, 5vw, 44px); letter-spacing: -0.015em; margin-top: 12
 .trilha a {
   display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: center;
   padding: 12px; border-radius: var(--raio-m); color: var(--branco); text-decoration: none;
-  background: #0a6840; transition: background 0.2s;
+  background: #134b88; transition: background 0.2s;
 }
-.trilha a:hover { background: #075438; }
+.trilha a:hover { background: #1a5a9e; }
 .trilha .n {
   display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px;
   background: var(--fundo); color: var(--amarelo); font-weight: 600; font-size: 18px;
@@ -227,6 +210,17 @@ h2 { font-size: clamp(30px, 5vw, 44px); letter-spacing: -0.015em; margin-top: 12
 .hero-card .arcos { top: 0; right: 0; width: 130px; height: 130px; }
 @media (min-width: 700px) { .hero-card .arcos { width: 160px; height: 160px; } }
 .hero-card-tit { position: relative; }
+
+/* Enfeites alegres da Prefeitura: só em área livre, nunca sobre texto. */
+.enfeites { position: absolute; pointer-events: none; width: 104px; height: 49px; }
+.enfeites > * { transform-box: fill-box; transform-origin: center; }
+.hero-card .enfeites { top: 22px; left: 50%; transform: translateX(-42%); }
+@media (max-width: 699px) { .hero-card .enfeites { width: 72px; height: 34px; top: 26px; left: auto; right: 142px; transform: none; } }
+@media (prefers-reduced-motion: no-preference) {
+  .enfeites path:first-child, .enfeites path:nth-of-type(3) { animation: piscar 3.2s ease-in-out infinite; }
+  .enfeites path:nth-of-type(3) { animation-delay: 1.6s; }
+}
+@keyframes piscar { 0%, 100% { transform: scale(1) rotate(0); } 50% { transform: scale(0.72) rotate(45deg); } }
 
 /* ---------- Blocos ---------- */
 .bloco { padding-top: 72px; padding-bottom: 8px; }
@@ -270,7 +264,7 @@ h2 { font-size: clamp(30px, 5vw, 44px); letter-spacing: -0.015em; margin-top: 12
 .rota-passos a:hover { border-color: var(--amarelo); }
 .rota-passos a::before {
   content: counter(r); display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px;
-  background: var(--verde); font-weight: 600;
+  background: var(--azul); font-weight: 600;
 }
 .rota-passos a::after { content: "→"; color: var(--amarelo); font-weight: 600; }
 .rota-passos b { display: block; font-weight: 600; line-height: 1.3; }
@@ -326,7 +320,7 @@ h2 { font-size: clamp(30px, 5vw, 44px); letter-spacing: -0.015em; margin-top: 12
 .painel { display: grid; gap: 24px; max-width: 880px; }
 .painel-tit { font-size: clamp(26px, 4vw, 34px); }
 .onde { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 14px; color: var(--suave); }
-.tag { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; border-radius: 8px; background: var(--verde); color: var(--branco); }
+.tag { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; border-radius: 8px; background: var(--azul-claro); color: var(--fundo); }
 .intro { max-width: 66ch; color: var(--suave); }
 
 ol.passos { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; counter-reset: s; }
@@ -365,12 +359,12 @@ ol.passos .corpo strong { font-weight: 600; line-height: 1.4; }
 .contato-mini dt { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fraco); }
 .contato-mini dd { margin: 0; font-weight: 500; font-size: 0.95em; overflow-wrap: break-word; }
 .nota-passo { margin-top: 8px; padding: 14px 16px; }
-ol.passos li.feito { background: var(--verde-vidro); border-color: rgba(13, 128, 73, 0.6); }
+ol.passos li.feito { background: var(--azul-vidro); border-color: rgba(204, 224, 255, 0.5); }
 ol.passos li.feito .corpo strong { text-decoration: line-through; text-decoration-color: var(--amarelo); text-decoration-thickness: 2px; }
 
 .nota { border-radius: var(--raio-m); padding: 16px 20px; display: grid; gap: 6px; }
 .nota h4 { font-size: 17px; font-weight: 600; }
-.nota.info { background: var(--verde-vidro); border-left: 4px solid var(--verde); }
+.nota.info { background: var(--azul-vidro); border-left: 4px solid var(--azul-claro); }
 .nota.alerta { background: var(--amarelo-vidro); border-left: 4px solid var(--amarelo); }
 .nota.alerta h4 { color: var(--amarelo); }
 .quem { font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--amarelo); }
@@ -434,7 +428,7 @@ details.extra ol, details.extra ul { margin: 0; padding-left: 22px; display: gri
 .fluxo li:last-child::after { display: none; }
 .fluxo b { font-weight: 600; }
 .docs { display: flex; flex-wrap: wrap; gap: 8px; }
-.docs span { font-size: 13px; font-weight: 600; padding: 5px 12px; border-radius: 8px; background: var(--verde); }
+.docs span { font-size: 13px; font-weight: 600; padding: 5px 12px; border-radius: 8px; background: var(--azul-claro); color: var(--fundo); }
 
 /* Prints: inteiros e grandes no passo (nunca recortados nem ampliados além do original).
    O detalhe se lê no visualizador, que amplia até o tamanho real. */
@@ -444,13 +438,13 @@ details.extra ol, details.extra ul { margin: 0; padding-left: 22px; display: gri
   position: relative; display: block; max-width: 100%; padding: 0; overflow: hidden; cursor: zoom-in;
   background: #fff; border: 1px solid var(--linha); border-radius: var(--raio-p); transition: border-color 0.2s, box-shadow 0.2s;
 }
-.prints button:hover { border-color: var(--amarelo); box-shadow: 0 0 0 3px rgba(255, 205, 0, 0.25); }
+.prints button:hover { border-color: var(--amarelo); box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.25); }
 .prints img { display: block; width: auto; max-width: 100%; height: auto; }
 .prints button::after {
   content: "Ampliar"; position: absolute; right: 8px; bottom: 8px;
   padding: 5px 10px 5px 28px; border-radius: 8px; background-color: var(--fundo); color: var(--amarelo);
   font: 600 12px/1.2 var(--sans); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffcd00' stroke-width='2.4' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='6.5'/%3E%3Cpath d='m15.5 15.5 5 5M10.5 7.5v6M7.5 10.5h6'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFD700' stroke-width='2.4' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='6.5'/%3E%3Cpath d='m15.5 15.5 5 5M10.5 7.5v6M7.5 10.5h6'/%3E%3C/svg%3E");
   background-repeat: no-repeat; background-position: 8px center; background-size: 15px;
 }
 /* dentro de um passo, o print ocupa o cartão inteiro, por baixo da coluna da caixa de marcar */
@@ -531,7 +525,7 @@ ol.passos .prints { margin-left: -54px; }
   border: 1.5px solid var(--linha-forte); background: var(--sup); color: var(--branco);
 }
 .busca::placeholder { color: var(--fraco); }
-.busca:focus { outline: none; border-color: var(--amarelo); box-shadow: 0 0 0 3px rgba(255, 205, 0, 0.2); }
+.busca:focus { outline: none; border-color: var(--amarelo); box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2); }
 .faq { display: grid; gap: 8px; margin-top: 16px; max-width: 880px; }
 .faq details { background: var(--sup); border: 1px solid var(--linha); border-radius: var(--raio-m); }
 .faq details:target, .faq details.alvo { border-color: var(--amarelo); }
@@ -584,24 +578,33 @@ ol.passos .prints { margin-left: -54px; }
 .faixa {
   position: relative; isolation: isolate; overflow: hidden;
   display: flex; flex-direction: column; gap: 24px;
-  background: var(--verde); border-radius: 32px; padding: 40px 24px;
+  background: var(--azul); border-radius: 32px; padding: 40px 24px;
 }
 @media (min-width: 700px) { .faixa { flex-direction: row; align-items: center; padding: 40px 48px; } }
-.faixa p { font-size: clamp(24px, 3.4vw, 30px); font-weight: 500; line-height: 1.25; }
+.faixa p { position: relative; font-size: clamp(24px, 3.4vw, 32px); font-weight: 600; line-height: 1.2; max-width: 16ch; }
 .faixa img { height: 80px; width: auto; align-self: flex-start; }
-@media (min-width: 700px) { .faixa img { height: 96px; margin-left: 40px; } }
+@media (min-width: 700px) { .faixa { gap: 40px; } .faixa img { height: 104px; align-self: center; } }
+.enfeites-faixa { top: 24px; right: 28px; }
+@media (max-width: 699px) { .enfeites-faixa { top: 28px; right: 20px; } }
 .arcos-baixo { right: -40px; bottom: -40px; width: 220px; height: 220px; transform: rotate(90deg); }
 @media (min-width: 700px) { .arcos-baixo { width: 420px; height: 420px; right: -120px; bottom: -120px; } }
 .apoio-tit { margin-top: 40px; text-align: center; font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--fraco); }
-.logos { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 32px 48px; margin-top: 24px; }
-.logos img { height: 56px; width: auto; object-fit: contain; }
-.logos img:nth-child(2) { height: 48px; }
+.assinaturas {
+  display: flex; align-items: center; justify-content: center; gap: 20px;
+  width: fit-content; max-width: 100%; margin: 20px auto 0;
+  background: var(--branco); border-radius: var(--raio); padding: 16px 24px;
+}
+@media (min-width: 700px) { .assinaturas { gap: 32px; padding: 18px 36px; } }
+.assinaturas img { height: 40px; width: auto; min-width: 0; object-fit: contain; }
+.assinaturas img + .div + img { height: 52px; }
+@media (min-width: 700px) { .assinaturas img { height: 52px; } .assinaturas img + .div + img { height: 66px; } }
+.assinaturas .div { width: 2px; align-self: stretch; background: #e3e3e3; flex: none; }
 .aviso { margin: 24px auto 0; max-width: 78ch; text-align: center; font-size: 13px; line-height: 1.6; color: var(--fraco); }
 .aviso + .aviso { margin-top: 8px; }
 
 /* ---------- Visualizador de prints ---------- */
 .lightbox {
-  position: fixed; inset: 0; z-index: 80; background: rgba(0, 18, 17, 0.95);
+  position: fixed; inset: 0; z-index: 80; background: rgba(0, 26, 51, 0.95);
   display: grid; grid-template-rows: auto minmax(0, 1fr) auto; gap: 10px;
   padding: calc(10px + env(safe-area-inset-top)) max(10px, env(safe-area-inset-right)) calc(10px + env(safe-area-inset-bottom)) max(10px, env(safe-area-inset-left));
 }
@@ -638,7 +641,7 @@ ol.passos .prints { margin-left: -54px; }
 
 /* ---------- Impressão: o checklist em papel, para o balcão ---------- */
 @media print {
-  :root { --fundo: #fff; --sup: #fff; --sup-2: #fff; --linha: #bbb; --linha-forte: #888; --suave: #333; --fraco: #555; --verde-vidro: #eef6f1; --amarelo-vidro: #fff8d6; }
+  :root { --fundo: #fff; --sup: #fff; --sup-2: #fff; --linha: #bbb; --linha-forte: #888; --suave: #333; --fraco: #555; --azul-vidro: #eef3fa; --amarelo-vidro: #fff8d6; }
   body { background: #fff; color: #000; font-size: 11pt; }
   .topo, .pular, .hero, #caminho, .ferramentas, .trilho, .proxima, .prints, details.extra, .risco-escolha, .progresso-acoes,
   #mudar, #situacoes, #problemas, #depois, #glossario, #contato, .rodape, .lightbox, [data-para] { display: none !important; }
